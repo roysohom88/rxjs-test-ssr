@@ -1,6 +1,12 @@
 // Import RxJS;
-import { of, Observable } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
+import { of, Observable, interval } from 'rxjs';
+import { map, filter, take, takeWhile } from 'rxjs/operators';
+interval(1000)
+  .pipe(
+    take(3),
+    map(v => Date.now())
+  )
+  .subscribe(value => console.log('Subscriber: ' + value));
 //emit 1,2,3,4,5
 //const source = of(1, 2, 3, 4, 5);
 //allow values until value from source is greater than 4, then complete
