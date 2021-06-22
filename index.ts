@@ -39,3 +39,23 @@ const clicks = fromEvent(document, 'click');
 const delayedClicks = clicks.pipe(delay(1000)); // each click emitted after 1 second
 delayedClicks.subscribe(x => console.log(x));
 //-------------------------------------------------------------
+//const hello = Observable.create(function(observer) {
+const hello = new Observable(observer => {
+  observer.next('Hello');
+  observer.next('World');
+  observer.complete();
+});
+//output: 'Hello'...'World'
+//const subscribe_obs = hello.subscribe(val => console.log(val));
+const subscribe_obs = hello.subscribe({
+  next(x) {
+    console.log('got value ' + x);
+  },
+  error(err) {
+    console.error('something wrong occurred: ' + err);
+  },
+  complete() {
+    console.log('done');
+  }
+});
+subscribe_obs.unsubscribe();
