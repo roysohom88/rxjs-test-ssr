@@ -41,8 +41,25 @@ const DATA_SOURCE = [
   'I am the last string'
 ];
 const observable$ = from(DATA_SOURCE);
-
 observable$.subscribe(console.log);
+const DATA_SOURCE1 = [
+  'String 1',
+  'String 2',
+  'Yet another string',
+  'I am the last string'
+];
+const observableArray$ = of(DATA_SOURCE1);
+console.log('Array data source');
+observableArray$.subscribe(console.log);
+console.log('\n');
+console.log('Sequence data source');
+const observableSequence$ = of(
+  'String 1',
+  'String 2',
+  'Yet another string',
+  'I am the last string'
+);
+observableSequence$.subscribe(console.log);
 //-------------------------------------------------------------
 const clicks = fromEvent(document, 'click');
 const delayedClicks = clicks.pipe(delay(1000)); // each click emitted after 1 second
