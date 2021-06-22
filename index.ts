@@ -34,8 +34,6 @@ const calculateNumbers = (): void => {
     .subscribe(result => console.log(result));
 };
 calculateNumbers();
-//emit 1,2,3,4,5
-//const source = of(1, 2, 3, 4, 5);
 //-------------------------------------------------------------
 const clicks = fromEvent(document, 'click');
 const delayedClicks = clicks.pipe(delay(1000)); // each click emitted after 1 second
